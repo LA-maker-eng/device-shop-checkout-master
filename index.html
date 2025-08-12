@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- 图标显示在网页名 -->
+    <link
+      rel="icon"
+      href="resources/favicon.ico"
+      type="image/x-icon"
+      sizes="96x96"
+    />
+
+  <link rel="stylesheet" href="styles.css">
+
+    <title>Device Shop Checkout | devChallenges.io</title>
+
+    <!--You are welcome to delete these styles or modify them in your own stylesheet -->
+     
+  </head>
+  <body>
+   
+
+    
+<div class="top-background">
+  <img src="resources/background-image.png" alt="顶部背景" class="top-image">
+</div>
+
+<!-- 原 header -->
+<header class="page-header">
+  
+  <p>Checkout<span>3ITEMS</span></p>
+  
+</header>
+
+ <!-- 2. 主内容容器：左右分栏 -->
+  <main class="main-container">
+    <!-- 左侧：商品汇总 -->
+    <section class="summary-section">
+  <!-- 商品列表容器 -->
+      <div class="products">
+        <!-- 单个商品：后续循环/复制这个结构 -->
+        <div class="product-item">
+          <div class="product-card">
+          <img src="resources/Gold.png" alt="iPhone 12 Pro"></div>
+          <div class="product-info">
+            <h2>iPhone 12 Pro</h2>
+            <p>Golden</p>
+            <br/>
+            <span>x 1</span></div>
+            <!-- 右上角价格 -->
+  <div class="price-top-right">
+    <span>$999.00</span>
+  </div>
+  <!-- 右下角删除按钮 -->
+<button class="close-btn" aria-label="关闭">
+  <img src="resources/close-icon.svg" alt="关闭图标">
+</button>
+        </div>
+        <!-- 重复 Apple Watch、iMac 的结构... -->
+
+         <div class="product-item">
+          <div class="product-card">
+          <img src="resources/Apple-watch.png" alt="Apple Watch"></div>
+          <div class="product-info">
+            <h2>Apple Watch</h2>
+            <p>Blue</p>
+            <br/>
+            <span>x 1</span>
+            
+          </div>
+        <div class="price-top-right">
+    <span>$399.00</span>
+  </div>
+  <!-- 右下角删除按钮 -->
+<button class="close-btn" aria-label="关闭">
+  <img src="resources/close-icon.svg" alt="关闭图标">
+</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-card"><img src="resources/iMac.png" alt="iMac"></div>
+          <div class="product-info">
+            <h2>iMac</h2>
+            <p>Green</p>
+            <br/>
+            <span>x 1</span>
+            
+          </div>
+          
+          <div class="price-top-right">
+    <span>$1199.00</span>
+  </div>
+  <!-- 右下角删除按钮 -->
+  <button class="close-btn" aria-label="关闭">
+  <img src="resources/close-icon.svg" alt="关闭图标">
+</button>
+              </div>
+
+<!-- 这里添加分隔线 -->
+<div class="thin-line"></div>
+
+
+      <!-- 优惠券 -->
+      <div class="coupon">
+        <input type="text" placeholder="Enter coupon code">
+        <button>Apply Coupon</button>
+      </div>
+
+      <!-- 价格计算 @-->
+      <div class="price-calculation">
+        <p><span>Sub total</span><span>$2597.00</span></p>
+      <p><span>Tax</span><span>$623.28</span></p>
+      <p><span>Total</span><span>$3220.28</span></p>
+      </div>
+    </section>
+
+    <!-- 右侧：联系表单 -->
+    <section class="form-section">
+      <h2>Contact Information</h2>
+      <form>
+        <div class="form-group">
+          <label for="name">First & Last name</label>
+          <input type="text" id="name" placeholder="Enter first & last name">
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="Enter email address">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="country">Country</label>
+            <select id="country">
+              <option>Finland</option>
+              <!-- 其他国家... -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="postal">Postal Code</label>
+            <input type="text" id="postal" value="00270">
+          </div>
+        </div>
+        <button type="submit">Continue</button>
+      </form>
+    </section>
+     
+  </main>
+  </body>
+</html>
