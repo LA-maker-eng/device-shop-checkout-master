@@ -71,7 +71,6 @@ header, main, section, article, aside, footer {
   display: flex; /* 开启 Flex 布局 */
   margin: -100px auto 0; /* 向上偏移覆盖背景（数值=背景图高度的一半更自然） */
   max-width: 1200px; /* 限制页面最大宽度，避免太宽 */
-  gap: 20px; /* 子元素之间的间距（替代 margin） @@@*/
   background-color: #fff; /* 容器背景色，与页面区分 */
   border-radius: 12px; /* 圆角，让页面更柔和 */
   box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* 阴影，提升层次感 */
