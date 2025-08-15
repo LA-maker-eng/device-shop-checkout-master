@@ -11,7 +11,8 @@ jobs:
       - name: Set Cache-Control
         run: |
           mkdir -p _site
-          cp -r * _site
+          
+          cp -r $(ls -A | grep -v "^_site$") _site
           echo -e "/*\n  Cache-Control: public, max-age=31536000" > _site/_headers
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
