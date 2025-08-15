@@ -1,0 +1,308 @@
+/* 1. 重置默认样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* 让宽高计算更直观 */
+}
+
+body {
+  font-family: 'Inter', sans-serif; /* 用之前设计规范的字体 */
+  background-color: white; /* 页面背景色，可根据设计稿调整 */
+  color: #333; /* 全局文字颜色 */
+  line-height: 1.5; /* 全局行高，提升可读性 */
+   /* 重要：给body设置相对定位，作为图片的定位参考 */
+            position: relative;
+        
+}
+
+/* 2. 语义化标签的基础样式（可选，为了统一） */
+header, main, section, article, aside, footer {
+  display: block; /* 确保旧浏览器兼容 */
+}
+
+.top-background {
+  position: relative;
+  width: 100%;
+  height: 200px; /* 设计稿背景图高度，按需调整 */
+  overflow: hidden;
+  z-index: 5; /* 背景层，低于内容层 */
+}
+
+/* 背景图自适应 */
+.top-image {
+  width: 100%;
+
+  object-fit: cover;
+}
+
+
+.page-header{
+   position: absolute; /* 脱离文档流，浮在背景图上 */
+  top: 40px; 
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 15; /* 标题层，高于背景和内容 */
+  color: #fff; /* 文字变白适配背景 */
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  font-weight: 900;
+  font-size: 19px;
+  
+
+}
+
+
+/* 实现左右分栏布局 */
+ /* 给主容器加 Flex 布局 */
+.main-container {
+    position: relative; /* 相对定位以支持z-index */
+  z-index: 10; /* 高于图片的z-index，确保在上方 */
+  display: flex; /* 开启 Flex 布局 */
+  margin: -100px auto 0; /* 向上偏移覆盖背景（数值=背景图高度的一半更自然） */
+  max-width: 1200px; /* 限制页面最大宽度，避免太宽 */
+  background-color: #fff; /* 容器背景色，与页面区分 */
+  border-radius: 12px; /* 圆角，让页面更柔和 */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* 阴影，提升层次感 */
+  overflow: hidden; /* 新增这行 裁剪子元素，保证圆角完整 */
+}
+
+
+/* 左侧商品汇总 */
+.summary-section {
+display: flex; /* 新增：让内部元素垂直占满 */
+  flex-direction: column; /* 新增：纵向排列 */
+  background-color: #E5E7EB;
+  flex: 2.5; 
+  overflow: hidden; 
+  
+  
+
+}
+
+/* 右侧表单 */
+.form-section {
+  flex: 2; /* 占 2 份 */
+}
+
+/* 进一步细化，子模块 */
+/* 单个商品 */
+.product-item {
+  display: flex; /* 让图片和文字并排 */
+ align-items: center;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px; /* 卡片之间的间距 */
+  gap: 15px; /* 图片和文字的间距 */
+  height: 120px;
+  position: relative; 
+}
+
+.product-card{
+    background-color: white;
+    width: 100px;
+    height: 100px;
+
+    display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center;     /* 垂直居中 */
+  border-radius: 8px; /* 圆角，让页面更柔和 */
+}
+
+
+
+.product-card img {
+  width:auto; 
+  height:auto;
+   max-width: 100%; /* 避免图片超出父容器宽度 */
+  max-height: 100%;/* 避免图片超出父容器高度 */
+ object-fit: contain; /* 保持比例，完整显示图片 */
+}
+
+.product-info {
+  flex: 1; /* 让文字区域占满剩余空间 */
+}
+
+.product-info h2 {
+  font-size: 1rem; /* 标题字号，参考设计规范 */
+  font-weight: 600; /* 字重，对应设计稿的 Medium/Semibold */
+  margin-bottom: 4px;
+}
+
+.product-info p {
+  font-size: 0.875rem; /* 辅助文字更小 */
+  color: #666;
+}
+
+
+.thin-line {
+  /* 核心：1px 浅灰色实线 */
+  border-top: 1px solid #D2D5DA; 
+  /* 如果是水平细线，宽度设为 90%（或继承父容器宽度） */
+  width: 96%; 
+  /* 上下间距，让线条不贴紧内容 */
+  margin: 0 auto; 
+}
+
+.coupon{
+   width: 96%;
+  margin: 0 auto; 
+  display: flex;
+  gap: 10px;
+  padding: 10px 10px;
+  /* 新增：让flex容器自身也水平居中（如果父元素是flex布局特殊情况） */
+  justify-content: center; 
+}
+
+.coupon input {
+  flex: 1; /* 占满剩余宽度 */
+  height: 56px; /* 增大高度 */
+  padding: 0 18px; /* 左右内边距，让内容不贴边 */
+  border: 1px solid #d1d5db; /* 浅灰色边框 */
+  border-radius: 12px; /* 圆角效果 */
+  font-size: 16px; /* 文字大小 */
+  font-family: 'Inter', sans-serif; /* 保持字体一致 */
+}
+
+.coupon button {
+  min-width: 160px; /* 按钮最小宽度，确保文字不换行 */
+  height: 56px; /* 与输入框同高，保持对齐 */
+  padding: 0 24px; /* 左右内边距，增大宽度 */
+  background-color: #000; /* 黑色背景 */
+  color: #fff; /* 白色文字 */
+  border: none; /* 去除默认边框 */
+  border-radius: 12px; /* 圆角效果，与输入框呼应 */
+  font-size: 16px; /* 文字大小 */
+  font-weight: 600; /* 文字加粗 */
+  cursor: pointer; /* 鼠标悬停显示手型 */
+  transition: background-color 0.2s ease; /* 背景色过渡动画 */
+}
+
+/* 按钮 hover 效果 */
+.coupon button:hover {
+  background-color: #394150; /*  hover 时背景稍浅 */
+}
+
+.price-calculation{
+    margin: 8px 0;
+}
+
+/* 价格计算区域样式 */
+.price-calculation{
+  margin: 20px;
+}
+
+.price-calculation p {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.price-calculation p span:first-child {
+  text-align: left;
+ font-weight: bold; /* 标准加粗，相当于 700 */
+}
+
+.price-calculation p span:last-child {
+  text-align: right;
+  font-weight: bold;
+}
+
+
+
+ /* 表单整体容器 */
+    .form-section {
+      width: 500px; /* 限制表单宽度，让布局更紧凑 */
+      padding: 24px;
+      /* 适配小屏幕 */
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05); 
+    }
+
+    /* 标题样式 */
+    .form-section h2 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    /* 表单组基础样式 */
+    .form-group {
+      margin-bottom: 30px;
+      display: flex; 
+      flex-direction: column; /* 让 label 和输入框垂直排列 */
+      gap: 4px; /* label 和输入框的间距 */
+    }
+
+    /* 行内表单组（国家 + 邮编） */
+    .form-row {
+      display: flex;
+      gap: 20px; /* 两个表单组的间距 */
+    }
+
+    /* 标签样式 */
+    .form-group label {
+      font-size: 14px;
+      color: #394150;
+      font-weight: 500;
+    }
+
+    /* 输入框/选择框通用样式 */
+    .form-group input,
+    .form-group select {
+      padding: 10px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      font-size: 14px;
+      outline: none;
+      background-color: #E5E7EB;
+      min-width: 240px; /* 按钮最小宽度，确保文字不换行 */
+  height: 56px; /* 与输入框同高，保持对齐 */
+    }
+
+    /* 输入框聚焦样式 */
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 2px rgba(59,130,246,0.1);
+    }
+
+    /* 按钮样式 */
+    form button {
+      width: 100%; /* 按钮占满父容器宽度 */
+      padding: 18px 0;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 9px;
+      font-weight: 600;
+    }
+
+    form button:hover {
+      background-color: #333;
+    }
+
+    /* 响应式适配（小屏幕下 form-row 自动换行） */
+    @media (max-width: 480px) {
+      .form-row {
+        flex-direction: column;
+        gap: 16px;
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
