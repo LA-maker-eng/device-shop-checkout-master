@@ -1,0 +1,20 @@
+name: GitHub Pages
+on:
+  push:
+    branches:
+      - master  # 这里根据实际分支名调整，若主分支是 main 就写 main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set Cache-Control
+        run: |
+          mkdir -p _site
+          cp -r * _site
+          echo -e "/*\n  Cache-Control: public, max-age=31536000" > _site/_headers
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
