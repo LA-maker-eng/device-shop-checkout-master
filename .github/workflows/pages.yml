@@ -2,7 +2,7 @@ name: GitHub Pages
 on:
   push:
     branches:
-      - master  # 这里根据实际分支名调整，若主分支是 main 就写 main
+      - master  # 根据实际主分支名调整（如main）
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -11,11 +11,13 @@ jobs:
       - name: Set Cache-Control
         run: |
           mkdir -p _site
-          
-          cp -r $(ls -A | grep -v "^_site$") _site
+          # 使用rsync复制文件，自动排除_site目录，支持隐藏文件
+          rsync -av --exclude='_site/' . _site/
           echo -e "/*\n  Cache-Control: public, max-age=31536000" > _site/_headers
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # 替换为之前添加的GH_PAGES_TOKEN
+          github_token: ${{ secrets.GH_PAGES_TOKEN }}
           publish_dir: ./_site
+    
